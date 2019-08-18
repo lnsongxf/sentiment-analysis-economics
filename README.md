@@ -15,3 +15,42 @@ pdf2txt.py -o eb201806.txt eb201806.en.pdf
 pdf2txt.py -o eb201807.txt eb201807.en.pdf
 ```
 
+## Word Tokenization with NLTK
+
+The two texts are inputted - the first report as the **training set** and the second as the **test set**, i.e. the eventual logistic regression is "trained" on the first report, and then predictions are made on the second.
+
+```
+train = open('eb201806.txt').read()
+test = open('eb201807.txt').read()
+
+import re
+train2=re.sub('[^A-Za-z]+', ' ', train)
+test2=re.sub('[^A-Za-z]+', ' ', test)
+```
+
+The next step is **word tokenization**, which involves splitting a large sample of text into words.
+
+```
+# WORD TOKENIZATION: Splitting a large sample of text into words
+from nltk.corpus import stopwords
+
+# Set of stopwords needs to be downloaded when running on the first occasion
+import nltk
+# nltk.download('stopwords')
+
+from nltk.tokenize import word_tokenize
+print(word_tokenize(train2))
+train2=word_tokenize(train2)
+train2
+
+print(word_tokenize(test2))
+test2=word_tokenize(test2)
+test2
+```
+
+Here is a sample:
+
+```
+['Economic', 'Bulletin', 'Issue', 'Contents', 'Economic', 'and', 'monetary', 'developments', 'Overview', 'External', 'environment' .... 'Trends', 'and', 'developments', 'in', 'the', 'use', 'of', 'euro', 'cash', 'over', 'the', 'past', 'ten', 'years', 'Statistics', 'ECB']
+```
+
