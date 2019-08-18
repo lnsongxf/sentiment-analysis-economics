@@ -6,3 +6,12 @@ With so many reports and economic bulletins being generated on a daily basis, on
 
 In this example, two reports from the European Central Bank website (available from the relevant GitHub repository) are converted into text format, and then a logistic regression is used to rank keywords by positive and negative sentiment.
 
+## Converting PDF to text
+
+Firstly, pdf2txt is used to convert the pdf files into text format using a Linux shell.
+
+```
+pdf2txt.py -o eb201806.txt eb201806.en.pdf
+pdf2txt.py -o eb201807.txt eb201807.en.pdf
+```
+
