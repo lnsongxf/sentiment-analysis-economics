@@ -73,5 +73,22 @@ train2=train2[:35000]
 test2=test2[:35000]
 ```
 
-Next, the CountVectorizer is used to both learn the text provided and then transform this text into an appropriate data frame for analysis.
+Next, the CountVectorizer is used to both learn the text provided and then transform this text into a sparse matrix for analysis.
 
+```
+from sklearn.feature_extraction.text import CountVectorizer
+
+cv = CountVectorizer(binary=True)
+cv.fit(train2)
+X = cv.transform(train2)
+X_test = cv.transform(test2)
+```
+
+As an example, X is now defined as follows:
+
+```
+<35000x3111 sparse matrix of type '<class 'numpy.int64'>'
+	with 33996 stored elements in Compressed Sparse Row format>
+```
+  
+  
