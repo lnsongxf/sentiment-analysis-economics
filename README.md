@@ -215,4 +215,4 @@ As an example, **currencies** has been interpreted as a positive word, implying 
 
 In this example, it has been demonstrated how a text can be summarized and sentiment analysis generated through a logistic regression. While NLP methods are not inherently foolproof and long texts still require a degree of human interpretation to ensure proper understanding, sentiment analysis can be of significant use when it comes to text summarization and allowing a reader to digest the main points of a report quickly.
 
-You can find the relevant GitHub Repository here, and I also recommend [the following post](https://towardsdatascience.com/sentiment-analysis-with-python-part-1-5ce197074184) if you wish to gain a further understanding of sentiment analysis.
+You can find the relevant GitHub Repository [here](https://www.michael-grogan.com/sentiment-analysis-economics/), and I also recommend [the following post](https://towardsdatascience.com/sentiment-analysis-with-python-part-1-5ce197074184) if you wish to gain a further understanding of sentiment analysis.
