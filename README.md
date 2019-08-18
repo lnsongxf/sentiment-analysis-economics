@@ -54,3 +54,22 @@ Here is a sample:
 ['Economic', 'Bulletin', 'Issue', 'Contents', 'Economic', 'and', 'monetary', 'developments', 'Overview', 'External', 'environment' .... 'Trends', 'and', 'developments', 'in', 'the', 'use', 'of', 'euro', 'cash', 'over', 'the', 'past', 'ten', 'years', 'Statistics', 'ECB']
 ```
 
+## CountVectorizer and Logistic Regression
+
+The train and test set have the following lengths:
+
+```
+>>> len(train2)
+43900
+
+>>> len(test2)
+39417
+```
+
+Each is partitioned so as to have an equal 35,000 length:
+
+```
+train2=train2[:35000]
+test2=test2[:35000]
+```
+
