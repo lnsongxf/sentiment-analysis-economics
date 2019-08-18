@@ -124,3 +124,13 @@ C regularization parameter = 0.5 yields accuracy of 0.8578285714285714
 C regularization parameter = 1 yields accuracy of 0.8603428571428572
 ```
 
+Now, let's assess the overall model accuracy:
+
+```
+>>> final_model = LogisticRegression(C=1)
+>>> final_model.fit(X, target)
+>>> print ("Model Accuracy: %s" 
+>>>        % accuracy_score(target, final_model.predict(X_test)))
+
+Model Accuracy: 0.8568857142857143
+```
