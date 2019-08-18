@@ -73,3 +73,5 @@ train2=train2[:35000]
 test2=test2[:35000]
 ```
 
+Next, the CountVectorizer is used to both learn the text provided and then transform this text into an appropriate data frame for analysis.
+
