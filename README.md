@@ -54,7 +54,7 @@ Here is a sample:
 ['Economic', 'Bulletin', 'Issue', 'Contents', 'Economic', 'and', 'monetary', 'developments', 'Overview', 'External', 'environment' .... 'Trends', 'and', 'developments', 'in', 'the', 'use', 'of', 'euro', 'cash', 'over', 'the', 'past', 'ten', 'years', 'Statistics', 'ECB']
 ```
 
-## CountVectorizer and Logistic Regression
+## CountVectorizer
 
 The train and test set have the following lengths:
 
@@ -91,4 +91,36 @@ As an example, X is now defined as follows:
 	with 33996 stored elements in Compressed Sparse Row format>
 ```
   
-  
+# Logistic Regression
+
+Having properly formatted the text using the procedures above, the logistic regression is now trained using the train set - with 75% of this train set being used to train the model, and the remaining 25% reserved for validation purposes.
+
+```
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+
+target = [1 if i < 5000 else 0 for i in range(35000)]
+
+X_train, X_val, y_train, y_val = train_test_split(
+    X, target, train_size = 0.75
+)
+
+for c in [0.01, 0.05, 0.25, 0.5, 1]:
+    
+    lr = LogisticRegression(C=c)
+    lr.fit(X_train, y_train)
+    print ("C regularization parameter = %s yields accuracy of %s" 
+           % (c, accuracy_score(y_val, lr.predict(X_val))))
+```
+
+Here are the accuracy results given each setting for the regularization parameter C:
+
+```
+C regularization parameter = 0.01 yields accuracy of 0.8587428571428571
+C regularization parameter = 0.05 yields accuracy of 0.8587428571428571
+C regularization parameter = 0.25 yields accuracy of 0.8587428571428571
+C regularization parameter = 0.5 yields accuracy of 0.8578285714285714
+C regularization parameter = 1 yields accuracy of 0.8603428571428572
+```
+
