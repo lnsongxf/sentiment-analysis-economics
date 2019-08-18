@@ -134,3 +134,83 @@ Now, let's assess the overall model accuracy:
 
 Model Accuracy: 0.8568857142857143
 ```
+
+## Sentiment Analysis
+
+Now that the logistic regression has been trained, let's observe the 20 top positive and negative words as indicated by the model.
+
+```
+feature_to_coef = {
+    word: coef for word, coef in zip(
+        cv.get_feature_names(), final_model.coef_[0]
+    )
+}
+for highest_positives in sorted(
+    feature_to_coef.items(), 
+    key=lambda x: x[1], 
+    reverse=True)[:20]:
+    print (highest_positives)
+    
+for highest_negatives in sorted(
+    feature_to_coef.items(), 
+    key=lambda x: x[1])[:20]:
+    print (highest_negatives)
+```
+
+### Positive Words
+
+```
+('emes', 2.8087942720630537)
+('uncertainties', 2.6969534994438056)
+('council', 2.6406758309641223)
+('governing', 2.6406758309641223)
+('weigh', 2.59457201762457)
+('medium', 2.572699507530095)
+('moderate', 2.5668344198303923)
+('spreads', 2.4637286879924543)
+('remain', 2.419420988993332)
+('currencies', 2.4157254834188198)
+('relations', 2.415447222800664)
+('activity', 2.3397460113102984)
+('amid', 2.3326302368928875)
+('environment', 2.3326302368928875)
+('near', 2.263318676133264)
+('pace', 2.236958259190495)
+('vis', 2.236958259190495)
+('stimulus', 2.195135454801049)
+('projected', 2.1116174471453855)
+('expected', 2.047692902832495)
+```
+
+### Negative Words
+
+```
+('between', -1.7022023009702862)
+('capital', -1.6995634610512402)
+('not', -1.693279073829643)
+('flows', -1.60129753927606)
+('ils', -1.5333183320103416)
+('implied', -1.522046232039325)
+('model', -1.4989591800406523)
+('factor', -1.487131947235996)
+('cycle', -1.4395412126145506)
+('stock', -1.4304293384442213)
+('only', -1.3847531339874612)
+('circulation', -1.356685868110847)
+('such', -1.342224894450962)
+('one', -1.2969805371162153)
+('option', -1.2812312352865205)
+('banknotes', -1.2486347387958983)
+('international', -1.2144512592278498)
+('returns', -1.2144512592278498)
+('no', -1.1785121839560957)
+('cash', -1.1719971887652905)
+```
+
+We can see that certain words have been classed as positive and negative - which is highly dependent on context since a word can be interpreted as both positive or negative on this basis.
+
+As an example, **currencies** has been interpreted as a positive word, implying that the currency markets may have shown positive performance (from an ECB perspective) for the month in question. On the other hand, **stock** is ranked as having negative sentiment, indicating that stock market performance may have been lagging over the same period.
+
+## Conclusion
+
+In this example, it has been demonstrated how a text can be summarized and sentiment analysis generated through a logistic regression. While NLP methods are not inherently foolproof and long texts still require a degree of human interpretation to ensure proper understanding, sentiment analysis can be of significant use when it comes to text summarization and allowing a reader to digest the main points of a report quickly.
